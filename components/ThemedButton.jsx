@@ -4,13 +4,11 @@ import { Colors } from '../constants/Colors'
 const ThemedButton = ({ style, ...props }) => {
   return (
       <Pressable 
-      style={({pressed}) => [styles.btn, styles,pressed && styles.pressed, style]}
+      style={({ pressed }) => [styles.btn, pressed && styles.pressed, style]}
       {...props}
       />
   )
 }
-
-export default ThemedButton
 
 const styles = StyleSheet.create({
   btn: {  
@@ -22,3 +20,5 @@ const styles = StyleSheet.create({
     opacity: 0.8,
   }
 })
+
+export default ThemedButton
