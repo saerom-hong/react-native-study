@@ -1,8 +1,8 @@
 {
   "expo": {
     "scheme": "myfirstapp",
-    "name": "01",
-    "slug": "01",
+    "name": "myapp-01",
+    "slug": "myapp-01",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -14,7 +14,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.01"
     },
     "android": {
       "adaptiveIcon": {

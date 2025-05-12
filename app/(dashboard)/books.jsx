@@ -1,6 +1,7 @@
 import { StyleSheet, FlatList, Pressable } from 'react-native' 
 import { useBooks } from '../../hooks/useBooks'
 import { Colors } from '../../constants/Colors'
+import { useRouter } from 'expo-router'
 
 import Spacer from "../../components/Spacer"
 import ThemedText from "../../components/ThemedText"
@@ -10,6 +11,7 @@ import ThemedButton from '../../components/ThemedButton'
 
 const Books = () => {
   const { books, deleteBook } = useBooks()
+  const router = useRouter()
 
   return (
     <ThemedView safe={true} style={styles.container}>
