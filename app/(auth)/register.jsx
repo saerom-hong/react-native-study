@@ -21,7 +21,6 @@ const Register = () => {
     setError(null)
     try { 
       await register(email, password)
-      console.log('current user registered: ', user)
     } catch (error) {
       setError(error.message)
     }

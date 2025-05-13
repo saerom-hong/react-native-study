@@ -13,7 +13,6 @@ export const UserProvider = ({ children }) => {
     try {
       await account.createEmailPasswordSession(email, password)
       const response = await account.get()
-      console.log('login response', response)
       setUser(response)
     } catch (error) {
       throw Error(error.message)

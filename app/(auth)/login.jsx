@@ -23,7 +23,6 @@ const Login = () => {
 
     try { 
       await login(email, password)
-      console.log('current user logged in: ', user)
     } catch (error) {
       setError(error.message)
     }

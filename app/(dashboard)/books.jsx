@@ -7,10 +7,9 @@ import Spacer from "../../components/Spacer"
 import ThemedText from "../../components/ThemedText"
 import ThemedView from "../../components/ThemedView"
 import ThemedCard from '../../components/ThemedCard'  
-import ThemedButton from '../../components/ThemedButton'
 
 const Books = () => {
-  const { books, deleteBook } = useBooks()
+  const { books } = useBooks()
   const router = useRouter()
 
   return (
@@ -34,9 +33,6 @@ const Books = () => {
               <ThemedText>Written by {item.author}</ThemedText>
               <ThemedText>Description: {item.description}</ThemedText>
             </ThemedCard>
-            <ThemedButton onPress={() => deleteBook(item.$id)}>
-              <ThemedText>Delete</ThemedText>
-            </ThemedButton>
           </Pressable>
         )}
       />
