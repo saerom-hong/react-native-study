@@ -2,6 +2,8 @@
 As a web developer, I initially expected learning a new language for mobile development to be a challenge. However, I discovered that React Native is remarkably similar to React, making the transition much smoother than expected. This project was built following the excellent React Native tutorial series by [Net Ninja](https://www.youtube.com/watch?v=J2j1yk-34OY&list=PL4cUxeGkcC9hNTz3sxqGTfxAwU-DIHJd2), with some personal modifications and enhancements.
 
 This is a simple Todo application built with React Native and Expo. This app allows users to manage their tasks with a clean and intuitive interface, featuring real-time updates and persistent storage. 
+<br />
+<br />
 
 ## 🧰 Technologies Used
 
@@ -11,6 +13,7 @@ This is a simple Todo application built with React Native and Expo. This app all
 - **Appwrite** - Backend as a Service (BaaS) for data storage and authentication
 - **React Native Vector Icons** - Icon library for React Native
 - **React Native Safe Area Context** - Safe area utilities for React Native
+<br />
 
 ## Getting Started
 
@@ -35,8 +38,24 @@ npx expo start
 - For iOS: `npx expo run:ios`
 - For Android: `npx expo run:android`
 - For web: `npx expo start --web`
+<br />
 
 ## 📽 Project Overview
+### Screenshots
+<table>
+<tr>
+<td><img src="https://github.com/user-attachments/assets/fd89b690-de76-4aac-8f1a-c83c83cadbd0" width="200"></td>
+<td><img src="https://github.com/user-attachments/assets/c7d70e04-d4e3-47eb-90c5-8a4eb93b5b5c" width="200"></td>
+<td><img src="https://github.com/user-attachments/assets/34e80caa-3b3e-40c4-912f-998af203991e" width="200"></td>
+<td><img src="https://github.com/user-attachments/assets/c6feb043-050a-46d6-8686-9ca3db0b64e8" width="200"></td>
+<td><img src="https://github.com/user-attachments/assets/31398761-63d3-4c5c-8d90-e697ff3f7cca" width="200"></td>
+</tr>
+</table>
+
+### App Demo
+![Simulator+Screen+Recording](https://github.com/user-attachments/assets/454154f1-24be-434b-aa1b-e832ba96d086)
+
+<br />
 
 ## ✅ What I Learned
 
@@ -60,7 +79,7 @@ npx expo start
   - Understanding that these components render to native platform elements instead of HTML
 
 ### File-Based Navigation
-- Implementing route groups for better organization
+- Implementing route groups for better organisation
 - Understanding the navigation structure
 - Managing navigation state and transitions
 
@@ -68,7 +87,9 @@ npx expo start
 - Setting up Appwrite backend services
 - Implementing data persistence
 - Managing authentication and user data
-- Real-time data synchronization
+- Real-time data synchronisation
+
+<br />
 
 ## Project Structure
 
@@ -79,6 +100,6 @@ myapp-01/
 ├── contexts/         # React context providers
 ├── hooks/           # Custom React hooks
 ├── lib/             # Utility functions and configurations
-├── constants/       # Application constants
+├── constants/       # Store color scheme 
 └── assets/          # Static assets (images, fonts, etc.)
 ```
