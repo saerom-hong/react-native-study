@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Image } from 'react-native'
 import { Link } from 'expo-router'
-import Logo from '../assets/img/image_1.avif'
+import Logo from '../assets/img/todo_logo.png'
 
 // themed components
 import ThemedView from '../components/ThemedView'
@@ -13,20 +13,20 @@ const Home = () => {
       <Image source={Logo} style={styles.img} />
       <Spacer height={20} />
 
-      <ThemedText title={true} style={styles.title}>Hello, this is my first app</ThemedText>
+      <ThemedText title={true} style={styles.title}>Simple ToDo List</ThemedText>
       <Spacer height={10} />
 
-      <ThemedText style={styles.subtitle}>Reading List App</ThemedText>
+      <ThemedText style={styles.subtitle}>Record your daily tasks</ThemedText>
       <Spacer />
 
       <Link href="/login" style={styles.link}>
-      <ThemedText>Login</ThemedText>
+      <ThemedText style={styles.linkText}>Login</ThemedText>
       </Link>
       <Link href="/register" style={styles.link}>
-      <ThemedText>Register</ThemedText>
+      <ThemedText style={styles.linkText}>Register</ThemedText>
       </Link>
       <Link href="/profile" style={styles.link}>
-      <ThemedText>My Profile</ThemedText>
+      <ThemedText style={styles.linkText}>My Profile</ThemedText>
       </Link>
     </ThemedView>
   )
@@ -54,8 +54,14 @@ const styles = StyleSheet.create({
   link: {
     marginVertical: 10,
     padding: 10,
-    backgroundColor: 'pink',
-    color: 'white',
+    backgroundColor: 'purple',
     borderRadius: 5,
+    fontWeight: 'bold',
+    alignItems: 'center',
+    width: 100,
   },
+  linkText: {
+    textAlign: 'center',
+    color: '#f2f2f2',
+  }
 })

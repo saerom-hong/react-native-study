@@ -1,5 +1,5 @@
 import { StyleSheet, FlatList, Pressable } from 'react-native' 
-import { useBooks } from '../../hooks/useBooks'
+import { useTodos } from '../../hooks/useTodos'
 import { Colors } from '../../constants/Colors'
 import { useRouter } from 'expo-router'
 
@@ -8,8 +8,8 @@ import ThemedText from "../../components/ThemedText"
 import ThemedView from "../../components/ThemedView"
 import ThemedCard from '../../components/ThemedCard'  
 
-const Books = () => {
-  const { books } = useBooks()
+const Todos = () => {
+  const { todos } = useTodos()
   const router = useRouter()
 
   return (
@@ -17,21 +17,21 @@ const Books = () => {
 
       <Spacer />
       <ThemedText title={true} style={styles.heading}>
-        Your Reading List: {books.length}
+        Your Todo List: {todos.length}
       </ThemedText>
       
       <Spacer />
 
       <FlatList
-        data={books}
+        data={todos}
         keyExtractor={(item) => item.$id}
         contentContainerStyle={styles.list}
         renderItem={({ item }) => (
-          <Pressable onPress={() => router.push(`/books/${item.$id}`)}>
+          <Pressable onPress={() => router.push(`/todos/${item.$id}`)}>
             <ThemedCard style={styles.card} key={item.$id}>
-              <ThemedText style={styles.title}>Title: {item.title}</ThemedText>
-              <ThemedText>Written by {item.author}</ThemedText>
-              <ThemedText>Description: {item.description}</ThemedText>
+              <ThemedText style={styles.title}>TODO: {item.title}</ThemedText>
+              <ThemedText>Finish by: {item.deadline}</ThemedText>
+              <ThemedText>Extra notes: {item.description}</ThemedText>
             </ThemedCard>
           </Pressable>
         )}
@@ -41,7 +41,7 @@ const Books = () => {
   )
 }
 
-export default Books
+export default Todos
 
 const styles = StyleSheet.create({
   container: {

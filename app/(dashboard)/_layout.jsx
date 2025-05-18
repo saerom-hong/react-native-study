@@ -36,9 +36,9 @@ export default function DashboardLayout() {
           }} 
           />
         <Tabs.Screen 
-          name="books" 
+          name="todos" 
           options={{ 
-            title: "Books", 
+            title: "Todos", 
             tabBarIcon: ({ focused }) => (
               <Ionicons 
                 name={focused ? "book" : "book-outline"} 
@@ -62,7 +62,7 @@ export default function DashboardLayout() {
           }} 
           />
           <Tabs.Screen 
-            name="books/[id]"
+            name="todos/[id]"
             options={{
               href: null,
             }}

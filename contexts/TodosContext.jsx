@@ -6,13 +6,13 @@ import { useUser } from '../hooks/useUser'
 const DATABASE_ID = '681eb764001974e1d6da'
 const COLLECTION_ID = '681eb77a0023cde1af34'
 
-export const BooksContext = createContext()
+export const TodosContext = createContext()
 
-export function BooksProvider({ children }) {
-  const [books, setBooks] = useState([])
+export function TodosProvider({ children }) {
+  const [todos, setTodos] = useState([])
   const { user } = useUser()
 
-  async function fetchBooks() {
+  async function fetchTodos() {
     try {
       const response = await databases.listDocuments(
         DATABASE_ID,
@@ -22,23 +22,24 @@ export function BooksProvider({ children }) {
         ]
       )
 
-      setBooks(response.documents)
+      setTodos(response.documents)
     } catch (error) {
       console.error(error.message)
     }
   }
 
-  async function fetchBookById(id) {
+  async function fetchTodoById(id) {
     try {
-      //get single book by id
+      //get single Todos by id
       const response = await databases.getDocument(DATABASE_ID, COLLECTION_ID, id)
       return response
     } catch (error) {
       console.error(error.message)
+      throw error
     }
   }
 
-  async function createBook(data) {
+  async function createTodo(data) {
     try {
       await databases.createDocument(
         DATABASE_ID,
@@ -56,7 +57,7 @@ export function BooksProvider({ children }) {
     }
   }
 
-  async function deleteBook(id) {
+  async function deleteTodos(id) {
     try {
       await databases.deleteDocument(DATABASE_ID, COLLECTION_ID, id)
     } catch (error) {
@@ -69,21 +70,21 @@ export function BooksProvider({ children }) {
     const channel = `databases.${DATABASE_ID}.collections.${COLLECTION_ID}.documents`
 
     if(user) {
-      fetchBooks()
+      fetchTodos()
 
       unsubscribe = client.subscribe(channel, (response) => {
         const { payload, events } = response
 
         if(events[0].includes('create')) {
-          setBooks((prevBooks) => [...prevBooks, payload])
+          setTodos((prevTodos) => [...prevTodos, payload])
         }
 
         if(events[0].includes('delete')) {
-          setBooks((prevBooks) => prevBooks.filter((book) => book.$id !== payload.$id))
+          setTodos((prevTodos) => prevTodos.filter((Todos) => Todos.$id !== payload.$id))
         }
       })
     } else {
-      setBooks([])
+      setTodos([])
     }
     
     return () => {
@@ -96,8 +97,8 @@ export function BooksProvider({ children }) {
   }, [user])
 
   return(
-    <BooksContext.Provider value={{ books, fetchBooks, fetchBookById, createBook, deleteBook }}> 
+    <TodosContext.Provider value={{ todos, fetchTodos, fetchTodoById, createTodo, deleteTodos }}> 
       {children}
-    </BooksContext.Provider>
+    </TodosContext.Provider>
   )
 }

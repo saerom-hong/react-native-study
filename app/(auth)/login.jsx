@@ -43,6 +43,7 @@ const Login = () => {
           keyboardType="email-address"
           value={email}
           onChangeText={setEmail}
+          autoCapitalize="none"
         />
 
         <ThemedTextInput

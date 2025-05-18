@@ -1,7 +1,7 @@
 import { StyleSheet, TouchableWithoutFeedback, Keyboard, Text } from 'react-native'
 import { useRouter } from 'expo-router'
 import { useState } from 'react'
-import { useBooks } from '../../hooks/useBooks'
+import { useTodos } from '../../hooks/useTodos'
 
 import Spacer from "../../components/Spacer"
 import ThemedText from "../../components/ThemedText"
@@ -11,31 +11,31 @@ import ThemedTextInput from '../../components/ThemedTextInput'
 
 const Create = () => {
   const [title, setTitle] = useState('')
-  const [author, setAuthor] = useState('')
+  const [deadline, setDeadline] = useState('')
   const [description, setDescription] = useState('')
   const [loading, setLoading] = useState(false)
   
-  const { createBook } = useBooks()
+  const { createTodo } = useTodos()
   const router = useRouter()
 
   const handleSubmit = async () => {
-    if(!title.trim() || !author.trim() || !description.trim()) return
+    if(!title.trim() || !deadline.trim() || !description.trim()) return
     
     setLoading(true)
 
-    await createBook({
+    await createTodo({
       title,
-      author,
+      deadline,
       description,
     })
 
     //reset fields
     setTitle('')
-    setAuthor('')
+    setDeadline('')
     setDescription('')
 
     //redirect 
-    router.replace('/books')
+    router.replace('/todos')
 
     //reset loading state
     setLoading(false)
@@ -46,29 +46,30 @@ const Create = () => {
       <ThemedView style={styles.container}>
 
         <ThemedText title={true} style={styles.heading}>
-          Add a New Book
+          Add a New Todo
         </ThemedText>
         <Spacer />
 
         <ThemedTextInput
           style={styles.input}
-          placeholder="Book Title"
+          placeholder="What do you need to do?"
           value={title}
           onChangeText={setTitle}
+          autoCapitalize="words"
         />
-        <Spacer />
+        <Spacer height={20}/>
 
         <ThemedTextInput
           style={styles.input}
-          placeholder="Author"
-          value={author}
-          onChangeText={setAuthor}
+          placeholder="Deadline"
+          value={deadline}
+          onChangeText={setDeadline}
         />
-        <Spacer />
+        <Spacer height={20}/>
 
         <ThemedTextInput
           style={styles.multiline}
-          placeholder="Description"
+          placeholder="Extra notes"
           value={description}
           onChangeText={setDescription}
           multiline={true}
@@ -77,7 +78,7 @@ const Create = () => {
 
         <ThemedButton onPress={handleSubmit} disabled={loading}>
           <Text style={{ color: '#fff'}}>
-            {loading ? 'Saving...' : 'Create Book'}
+            {loading ? 'Saving...' : 'Create Todo'}
           </Text>
         </ThemedButton>
 
@@ -103,6 +104,7 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 6,
     alignSelf: "stretch",
+    minHeight: 60,
     marginHorizontal: 40,
   },
   multiline: {
